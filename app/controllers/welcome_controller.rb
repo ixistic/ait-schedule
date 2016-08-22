@@ -1,3 +1,6 @@
+require 'nokogiri'
+require 'open-uri'
+
 class WelcomeController < ApplicationController
   def index
     x = rand(0..1)
@@ -6,5 +9,8 @@ class WelcomeController < ApplicationController
     else
       @a = 1/x
     end
+
+    url = "https://www.youtube.com/feed/trending"
+    @doc = Nokogiri::HTML(open(url))
   end
 end
